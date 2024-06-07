@@ -42,7 +42,6 @@ public class DiagramService {
                     .build();
         }
         for (Node node : nodes) {
-            System.out.println(node);
             node.setDiagram(diagram);
             diagram.getNode_list().add(node);
         }
@@ -188,7 +187,12 @@ public class DiagramService {
                     cell.setCellValue("shape=source-shape;whiteSpace=wrap;html=1;strokeWidth=" + source .getSize() + ";aspect=fixed;resizable=0;fontSize=16;fontColor=#000000;strokeColor=" + source.getColor() + ";fillColor=#FFFFFF;verticalAlign=top;");
 
                     cell = row.createCell(6);
-                    cell.setCellValue(source.getActivationMode());
+                    switch (source.getActivationMode()) {
+                        case "2" -> cell.setCellValue("interactive");
+                        case "3" -> cell.setCellValue("automatic");
+                        case "4" -> cell.setCellValue("onstart");
+                        default -> cell.setCellValue("passive");
+                    }
 
                     cell = row.createCell(7);
                     cell.setCellValue("black");
@@ -266,7 +270,12 @@ public class DiagramService {
                     cell.setCellValue("shape=drain-shape;whiteSpace=wrap;html=1;strokeWidth=" + drain.getSize() + ";aspect=fixed;resizable=0;fontSize=16;fontColor=#000000;strokeColor=" + drain.getColor() + ";fillColor=#FFFFFF;verticalAlign=top;");
 
                     cell = row.createCell(6);
-                    cell.setCellValue(drain.getActivationMode());
+                    switch (drain.getActivationMode()) {
+                        case "2" -> cell.setCellValue("interactive");
+                        case "3" -> cell.setCellValue("automatic");
+                        case "4" -> cell.setCellValue("onstart");
+                        default -> cell.setCellValue("passive");
+                    }
 
                     cell = row.createCell(7);
                     cell.setCellValue("pull-any");
@@ -366,7 +375,12 @@ public class DiagramService {
                     cell.setCellValue("shape=pool-shape;whiteSpace=wrap;html=1;strokeWidth=" + pool.getSize() + ";aspect=fixed;resizable=0;fontSize=16;fontColor=#000000;strokeColor=" + pool.getColor() + ";fillColor=#FFFFFF;verticalAlign=top;");
 
                     cell = row.createCell(6);
-                    cell.setCellValue(pool.getActivationMode());
+                    switch (pool.getActivationMode()) {
+                        case "2" -> cell.setCellValue("interactive");
+                        case "3" -> cell.setCellValue("automatic");
+                        case "4" -> cell.setCellValue("onstart");
+                        default -> cell.setCellValue("passive");
+                    }
 
                     cell = row.createCell(7);
                     cell.setCellValue("pull-any");
@@ -464,8 +478,12 @@ public class DiagramService {
                         cell.setCellValue("shape=gate-shape;whiteSpace=wrap;html=1;strokeWidth=" + gate.getSize() + ";aspect=fixed;resizable=0;fontSize=16;fontColor=#000000;strokeColor=" + gate.getColor() + ";fillColor=#FFFFFF;verticalAlign=top;");
 
                         cell = row.createCell(6);
-                        cell.setCellValue(gate.getActivationMode());
-
+                        switch (gate.getActivationMode()) {
+                            case "2" -> cell.setCellValue("interactive");
+                            case "3" -> cell.setCellValue("automatic");
+                            case "4" -> cell.setCellValue("onstart");
+                            default -> cell.setCellValue("passive");
+                        }
                         cell = row.createCell(7);
                         cell.setCellValue("pull-any");
 
@@ -543,8 +561,12 @@ public class DiagramService {
                         cell.setCellValue("shape=trader-shape;whiteSpace=wrap;html=1;strokeWidth=" + trader.getSize() + ";aspect=fixed;resizable=0;fontSize=16;fontColor=#000000;strokeColor=" + trader.getColor() + ";fillColor=#FFFFFF;verticalAlign=top;");
 
                         cell = row.createCell(6);
-                        cell.setCellValue(trader.getActivationMode());
-
+                        switch (trader.getActivationMode()) {
+                            case "2" -> cell.setCellValue("interactive");
+                            case "3" -> cell.setCellValue("automatic");
+                            case "4" -> cell.setCellValue("onstart");
+                            default -> cell.setCellValue("passive");
+                        }
                         cell = row.createCell(7);
                         cell.setCellValue("single");
 
@@ -626,8 +648,12 @@ public class DiagramService {
                     cell.setCellValue("shape=converter-shape;whiteSpace=wrap;html=1;strokeWidth=" + converter.getSize() + ";aspect=fixed;resizable=0;fontSize=16;fontColor=#000000;strokeColor=" + converter.getColor() + ";fillColor=#FFFFFF;verticalAlign=top;");
 
                     cell = row.createCell(6);
-                    cell.setCellValue(converter.getActivationMode());
-
+                    switch (converter.getActivationMode()) {
+                        case "2" -> cell.setCellValue("interactive");
+                        case "3" -> cell.setCellValue("automatic");
+                        case "4" -> cell.setCellValue("onstart");
+                        default -> cell.setCellValue("passive");
+                    }
                     cell = row.createCell(7);
                     cell.setCellValue("pull-any");
 
@@ -822,8 +848,12 @@ public class DiagramService {
                     cell.setCellValue("shape=delay-shape;whiteSpace=wrap;html=1;strokeWidth=" + delay.getSize() + ";aspect=fixed;resizable=0;fontSize=16;fontColor=#000000;strokeColor=" + delay.getColor() + ";fillColor=#FFFFFF;verticalAlign=top;");
 
                     cell = row.createCell(6);
-                    cell.setCellValue(delay.getActivationMode());
-
+                    switch (delay.getActivationMode()) {
+                        case "2" -> cell.setCellValue("interactive");
+                        case "3" -> cell.setCellValue("automatic");
+                        case "4" -> cell.setCellValue("onstart");
+                        default -> cell.setCellValue("passive");
+                    }
                     cell = row.createCell(7);
                     cell.setCellValue("false");
 
@@ -1191,7 +1221,6 @@ public class DiagramService {
         for(Node node : nodes){
             mapByType.computeIfAbsent(node.getType(), k -> new ArrayList<>()).add(node);
         }
-        System.out.println(mapByType.get("ResourceConnection"));
         return mapByType;
     }
 
@@ -1222,7 +1251,6 @@ public class DiagramService {
                         continue;
                     }
                 }
-                System.out.println(currentType);
                 Node node = new Node();
                 if(row.getCell(0).getColumnIndex() == 0 && row.getCell(0).getCellType() != CellType.NUMERIC) continue;
 
@@ -1233,7 +1261,6 @@ public class DiagramService {
                                 case 0 -> {
                                     node.setNodeId((long) cell.getNumericCellValue());
                                     node.setType("Source");
-                                    System.out.println("made a source");
                                 }
                                 case 1 -> node.setLabel(cell.getStringCellValue());
                                 case 4 -> {
@@ -1257,7 +1284,6 @@ public class DiagramService {
                                 case 0 -> {
                                     node.setNodeId((long) cell.getNumericCellValue());
                                     node.setType("Drain");
-                                    System.out.println("made a drain");
 
                                 }
                                 case 1 -> node.setLabel(cell.getStringCellValue());

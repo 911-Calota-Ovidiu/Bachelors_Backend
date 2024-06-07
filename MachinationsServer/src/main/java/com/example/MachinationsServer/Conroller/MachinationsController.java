@@ -4,7 +4,7 @@ import com.example.MachinationsServer.Models.Diagram;
 import com.example.MachinationsServer.Models.Node;
 import com.example.MachinationsServer.Service.DiagramService;
 
-import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
