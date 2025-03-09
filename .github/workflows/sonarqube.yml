@@ -13,12 +13,12 @@ jobs:
           java-version: '17'  # Change this if your project uses another version
       - name: Move to the project directory
         run: cd MachinationsServer # Change this if your pom.xml is inside another directory
-      - name: Build with Maven
-        run: mvn -X clean compile
       - name: List files in target/classes (Debugging)
         run: ls -R target/classes || echo "Directory not found"
       - name: Show directory structure
         run: ls -R
+      - name: Build with Maven
+        run: mvn -X clean compile
       - name: SonarCloud Scan
         uses: SonarSource/sonarqube-scan-action@master
         env:
