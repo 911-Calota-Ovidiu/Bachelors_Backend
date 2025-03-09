@@ -1,5 +1,6 @@
 name: SonarCloud Analysis
 on: [push, pull_request]
+
 jobs:
   sonar:
     runs-on: ubuntu-latest
@@ -9,3 +10,7 @@ jobs:
         uses: SonarSource/sonarqube-scan-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.organization=911-calota-ovidiu
+            -Dsonar.projectKey=911-Calota-Ovidiu_Bachelors_Backend
