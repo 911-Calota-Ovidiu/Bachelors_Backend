@@ -6,6 +6,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'  # Change this if your project uses another version
+      - name: Build with Maven
+        run: mvn clean compile
+      - name: List files in target/classes (Debugging)
+        run: ls -R target/classes || echo "Directory not found"
       - name: SonarCloud Scan
         uses: SonarSource/sonarqube-scan-action@master
         env:
