@@ -14,7 +14,7 @@ jobs:
       - name: Move to the project directory
         run: cd MachinationsServer # Change this if your pom.xml is inside another directory
       - name: Build with Maven
-        run: mvn clean compile
+        run: mvn -X clean compile
       - name: List files in target/classes (Debugging)
         run: ls -R target/classes || echo "Directory not found"
       - name: SonarCloud Scan
