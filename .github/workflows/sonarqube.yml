@@ -14,3 +14,4 @@ jobs:
           args: >
             -Dsonar.organization=911-calota-ovidiu
             -Dsonar.projectKey=911-Calota-Ovidiu_Bachelors_Backend
+            -Dsonar.java.binaries=target/classes
