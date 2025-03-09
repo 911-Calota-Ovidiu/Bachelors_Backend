@@ -11,15 +11,12 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'  # Change this if your project uses another version
-      - name: Move to the project directory
-        run: cd MachinationsServer
-      - name: Check if inside folder
-        run: ls
       - name: List files in target/classes (Debugging)
         run: ls -R target/classes || echo "Directory not found"
       - name: Show directory structure
         run: ls -R
       - name: Build with Maven
+        working-directory: MachinationsServer  # Change this if `pom.xml` is inside a different folder
         run: mvn -X clean compile
       - name: SonarCloud Scan
         uses: SonarSource/sonarqube-scan-action@master
