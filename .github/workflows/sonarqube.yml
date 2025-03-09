@@ -12,7 +12,7 @@ jobs:
           distribution: 'temurin'
           java-version: '17'  # Change this if your project uses another version
       - name: Move to the project directory
-        run: cd MachinationsServer # Change this if your pom.xml is inside another directory
+        run: cd MachinationsServer
       - name: Check if inside folder
         run: ls
       - name: List files in target/classes (Debugging)
