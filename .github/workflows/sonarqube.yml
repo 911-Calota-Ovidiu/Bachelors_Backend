@@ -17,7 +17,7 @@ jobs:
         run: mvn -X clean compile
       - name: List files in target/classes (Debugging)
         run: ls -R target/classes || echo "Directory not found"
-      - name: Debug: Show directory structure
+      - name: Show directory structure
         run: ls -R
       - name: SonarCloud Scan
         uses: SonarSource/sonarqube-scan-action@master
